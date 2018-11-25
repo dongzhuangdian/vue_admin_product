@@ -63,6 +63,14 @@
         label="原因"
         prop="cause">
       </el-table-column>
+      <el-table-column
+      align="right">
+      <template slot-scope="scope">
+        <el-button
+          size="mini"
+          @click="editInfo()">Edit</el-button>
+      </template>
+    </el-table-column>
     </el-table>
   </div>
 </template>
@@ -141,6 +149,10 @@ export default {
           return v[j]
         }
       }))
+    },
+
+    editInfo() {
+      alert("hello")
     }
   }
 }
