@@ -10,32 +10,58 @@
       </a>
     </div>
 
-    <el-table v-loading="listLoading" :data="list" element-loading-text="拼命加载中" border fit highlight-current-row>
-      <el-table-column align="center" label="Id" width="95">
-        <template slot-scope="scope">
-          {{ scope.$index }}
+    <el-table v-loading="listLoading" :data="list" element-loading-text="拼命加载中" fit highlight-current-row>
+      <el-table-column type="expand">
+        <template slot-scope="props">
+          <el-table>
+            <el-table-column
+              label="#"
+              prop="id"
+              v-if="false">
+            </el-table-column>
+            <el-table-column
+              label="文件"
+              prop="fileName"
+              v-if="false">
+            </el-table-column>
+            <el-table-column
+              label="最近修改时间"
+              prop="lastModifyTime"
+              v-if="false">
+            </el-table-column>
+            <el-table-column
+              label="责任人"
+              prop="responsiblePerson"
+              v-if="false">
+            </el-table-column>
+            <el-table-column
+              label="原因"
+              prop="cause"
+              v-if="false">
+            </el-table-column>
+          </el-table>
+          <!-- <el-form label-position="left" inline class="demo-table-expand"> -->
         </template>
       </el-table-column>
-      <el-table-column label="Title">
-        <template slot-scope="scope">
-          {{ scope.row.title }}
-        </template>
+      <el-table-column
+        label="#"
+        prop="id">
       </el-table-column>
-      <el-table-column label="Author" width="110" align="center">
-        <template slot-scope="scope">
-          <el-tag>{{ scope.row.author }}</el-tag>
-        </template>
+      <el-table-column
+        label="文件"
+        prop="fileName">
       </el-table-column>
-      <el-table-column label="Readings" width="115" align="center">
-        <template slot-scope="scope">
-          {{ scope.row.pageviews }}
-        </template>
+      <el-table-column
+        label="最近修改时间"
+        prop="lastModifyTime">
       </el-table-column>
-      <el-table-column align="center" label="Date" width="220">
-        <template slot-scope="scope">
-          <i class="el-icon-time"/>
-          <span>{{ scope.row.timestamp | parseTime('{y}-{m}-{d} {h}:{i}') }}</span>
-        </template>
+      <el-table-column
+        label="责任人"
+        prop="responsiblePerson">
+      </el-table-column>
+      <el-table-column
+        label="原因"
+        prop="cause">
       </el-table-column>
     </el-table>
   </div>
@@ -126,6 +152,12 @@ export default {
   color: #606266;
   line-height: 40px;
   padding: 0 0px 0 0px;
+}
+.el-table::before {
+  height: 0px;
+}
+.el-table__empty-block {
+  min-height: 10px;
 }
 </style>
 
