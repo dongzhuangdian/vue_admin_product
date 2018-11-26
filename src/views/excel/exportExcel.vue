@@ -15,62 +15,50 @@
         <template slot-scope="props">
           <el-table>
             <el-table-column
+              v-if="false"
               label="#"
-              prop="id"
-              v-if="false">
-            </el-table-column>
+              prop="id"/>
             <el-table-column
+              v-if="false"
               label="文件"
-              prop="fileName"
-              v-if="false">
-            </el-table-column>
+              prop="fileName"/>
             <el-table-column
+              v-if="false"
               label="最近修改时间"
-              prop="lastModifyTime"
-              v-if="false">
-            </el-table-column>
+              prop="lastModifyTime"/>
             <el-table-column
+              v-if="false"
               label="责任人"
-              prop="responsiblePerson"
-              v-if="false">
-            </el-table-column>
+              prop="responsiblePerson"/>
             <el-table-column
+              v-if="false"
               label="原因"
-              prop="cause"
-              v-if="false">
-            </el-table-column>
+              prop="cause"/>
           </el-table>
           <!-- <el-form label-position="left" inline class="demo-table-expand"> -->
         </template>
       </el-table-column>
       <el-table-column
         label="#"
-        prop="id">
-      </el-table-column>
+        prop="id"/>
       <el-table-column
         label="文件"
-        prop="fileName">
-      </el-table-column>
+        prop="fileName"/>
       <el-table-column
         label="最近修改时间"
-        prop="lastModifyTime">
-      </el-table-column>
+        prop="lastModifyTime"/>
       <el-table-column
         label="责任人"
-        prop="responsiblePerson">
-      </el-table-column>
+        prop="responsiblePerson"/>
       <el-table-column
         label="原因"
-        prop="cause">
-      </el-table-column>
+        prop="cause"/>
       <el-table-column
-      align="right">
-      <template slot-scope="scope">
-        <el-button
-          size="mini"
-          @click="editInfo()">Edit</el-button>
-      </template>
-    </el-table-column>
+        align="right">
+        <template slot-scope="scope">
+          <edit/>
+        </template>
+      </el-table-column>
     </el-table>
   </div>
 </template>
@@ -78,13 +66,14 @@
 <script>
 import { fetchList } from '@/api/article'
 import { parseTime } from '@/utils'
+import edit from './components/Edit'
 
 // options components
 import BookTypeOption from './components/BookTypeOption'
 
 export default {
   name: 'ExportExcel',
-  components: { BookTypeOption },
+  components: { BookTypeOption, edit },
   data() {
     return {
       list: null,
@@ -152,7 +141,7 @@ export default {
     },
 
     editInfo() {
-      alert("hello")
+      alert('vue')
     }
   }
 }
