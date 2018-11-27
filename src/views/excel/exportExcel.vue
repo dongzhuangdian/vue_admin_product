@@ -3,14 +3,21 @@
   <div class="app-container">
 
     <div>
-      <BookTypeOption v-model="bookType" />
-      <el-button :loading="downloadLoading" style="margin:0 0 20px 20px;" type="primary" icon="document" @click="handleDownload">Excel</el-button>
+      <import-list/>
+      <export-list/>
       <a href="https://panjiachen.github.io/vue-element-admin-site/feature/component/excel.html" target="_blank" style="margin-left:15px;">
         <el-tag type="info">Documentation</el-tag>
       </a>
     </div>
 
-    <el-table v-loading="listLoading" :data="list" element-loading-text="拼命加载中" fit highlight-current-row>
+    <el-table v-loading="listLoading"
+      :data="list"
+      element-loading-text="拼命加载中"
+      fit
+      highlight-current-row
+      row-style="height:20px"
+      cell-style="padding:0"
+      style="font-size: 10px">
       <el-table-column type="expand">
         <template slot-scope="props">
           <el-table>
@@ -60,6 +67,7 @@
         </template>
       </el-table-column>
     </el-table>
+    <pagination :total="total" :current-page='current' @pagechange="pagechange"/>
   </div>
 </template>
 
@@ -67,13 +75,13 @@
 import { fetchList } from '@/api/article'
 import { parseTime } from '@/utils'
 import edit from './components/Edit'
-
-// options components
-import BookTypeOption from './components/BookTypeOption'
+import importList from './components/import'
+import exportList from './components/export'
+import pagination from './components/page'
 
 export default {
   name: 'ExportExcel',
-  components: { BookTypeOption, edit },
+  components: { edit, importList, exportList, pagination, pagination},
   data() {
     return {
       list: null,
@@ -81,7 +89,10 @@ export default {
       downloadLoading: false,
       filename: '',
       autoWidth: true,
-      bookType: 'xlsx'
+      bookType: 'xlsx',
+      total: 150,     // 记录总条数
+      display: 10,   // 每页显示条数
+      current: 1,   // 当前的页数
     }
   },
   created() {
@@ -139,6 +150,12 @@ export default {
         }
       }))
     },
+
+    pagechange:function(currentPage){
+       console.log(currentPage);
+       // ajax请求, 向后台发送 currentPage, 来获取对应的数据
+
+     },
 
     editInfo() {
       alert('vue')

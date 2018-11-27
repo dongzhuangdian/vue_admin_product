@@ -1,6 +1,6 @@
 <template>
   <div style="display:inline-block;">
-    <el-button type="primary" @click="dialogFormVisible = true">Edit<i class="el-icon-edit el-icon--right"></i></el-button>
+    <el-button type="primary" @click="dialogFormVisible = true">import<i class="el-icon-upload2 el-icon--right"></i></el-button>
 
     <el-dialog :visible.sync="dialogFormVisible" title="收货地址">
       <el-form :model="form">
