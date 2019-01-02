@@ -10,8 +10,7 @@
         label="操作"
         width="120">
         <template slot-scope="scope">
-          <el-button type="text" size="small">编辑</el-button>
-          <el-button @click="handleClick(scope.row)" type="text" size="small">查看历史</el-button>
+          <history-table></history-table>
         </template>
       </el-table-column>
       <el-table-column
@@ -73,8 +72,9 @@
 <script>
   import search from "./components/search.vue"
   import pagination  from "./components/page.vue"
+  import historyTable from "./components/history.vue"
   export default {
-    components:{search, pagination},
+    components:{search, pagination, historyTable},
     data() {
       return {
         tableData3: [{
